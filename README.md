@@ -1,3 +1,22 @@
+<img src="https://user-images.githubusercontent.com/19846942/129382463-b1e9e140-4807-495e-826d-fde003521566.png" width="300">
+
+# Tema de Wordpress pro site do Apagão dos Apps
+&nbsp;
+
+<sub>Desenvolvido por:</sub>
+
+🐈‍⬛ gata - Grupo de Ativismo Tecnológico Autônomo
+
+&nbsp;
+&nbsp;
+&nbsp;
+
+<hr>
+
+Abaixo, Readme do tema base utilizado:
+
+<hr>
+
 ## them.es Starter Theme
 
 **them.es Starter** is a WordPress Starter Theme built with Bootstrap. Please note that the Source files are only recommended for WordPress Developers who are searching for a simple, solid, proved and tested **Bootstrap Starter Theme** to build upon. **_Don't_ expect a ready-to-use WordPress Theme!**
