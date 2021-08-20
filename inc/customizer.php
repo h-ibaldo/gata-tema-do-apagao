@@ -115,6 +115,25 @@ function apagao_dos_apps_customize( $wp_customize ) {
 			'priority' => 3,
 		)
 	);
+
+	// Title?
+	$wp_customize->add_setting(
+		'titulo_em_texto',
+		array(
+			'default'           => '0',
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	$wp_customize->add_control(
+		'titulo_em_texto',
+		array(
+			'type'     => 'checkbox',
+			'label'    => __( 'Mostrar titulo do site ao inves de logo', 'apagao_dos_apps' ),
+			'section'  => 'theme_header_section',
+			'settings' => 'titulo_em_texto',
+			'priority' => 1,
+		)
+	);
 }
 add_action( 'customize_register', 'apagao_dos_apps_customize' );
 

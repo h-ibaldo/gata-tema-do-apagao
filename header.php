@@ -25,24 +25,45 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-xl-2">
-				<a class="navbar-brand" href="<?php echo esc_url( home_url() ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-					<?php
-						$header_logo = get_theme_mod( 'header_logo' ); // Get custom meta-value.
 
-						if ( ! empty( $header_logo ) ) :
-					?>
-						<img src="<?php echo esc_url( $header_logo ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" />
+			<div class="col-xl-2">
+				<a class="apg-nav-logo" href="<?php echo esc_url( home_url() ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+					
 					<?php
-						else :
+						
+						$titulo_em_texto  = get_theme_mod( 'titulo_em_texto', '0' ); // Get custom meta-value.
+
+						if ( '1' === $titulo_em_texto ) :
 							echo esc_attr( get_bloginfo( 'name', 'display' ) );
-						endif;
+
+						else:
 					?>
+
+						<?php
+
+							$header_logo = get_theme_mod( 'header_logo' ); // Get custom meta-value.
+
+							if ( ! empty( $header_logo ) ) :
+						?>
+
+							<img src="<?php echo esc_url( $header_logo ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" />
+
+
+						<?php else: ?>
+
+							<img src="/wp-content/themes/gata-tema-do-apagao/assets/img/lettering-apagao.jpg">
+
+						<?php endif; ?>
+					
+						
+					<?php endif; ?>
 				</a>
 			</div>
+
 			<div class="col">
 				body
 			</div>
+
 			<div class="col-xl-2">
 				sidebar
 			</div>
