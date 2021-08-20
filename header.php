@@ -28,10 +28,10 @@
 	<header>
 		<nav>
 			<div class="container">
-				<div class="row">
+				<div class="row justify-content-between">
 
 					<!-- BARRA LATERAL ESQUERDA -->
-					<div class="col-xl-2">
+					<div class="col-md-3 overflow-auto sticky-top">
 
 						<div class="min-vh-100 py-4 d-flex flex-column">
 
@@ -72,7 +72,7 @@
 							<div class="d-flex flex-column col justify-content-between mt-5">
 
 								<!-- MENU DE NAVEGACAO -->
-								<div >
+								<div class="apg-nav">
 
 									<?php
 										wp_nav_menu(
@@ -121,8 +121,6 @@
 							</div>
 
 
-							
-
 						</div>
 
 
@@ -130,9 +128,12 @@
 					<!--/ BARRA LATERAL ESQUERDA -->
 
 
-					<div class="col">
-						body
+
+					<!-- CONTEUDO PRINCIPAL -->
+					<div class="col-md-6">
+						<?php include 'content-index.php';?>
 					</div>
+					<!-- / CONTEUDO PRINCIPAL -->
 
 					<div class="col-xl-2">
 						<div class="my-4">

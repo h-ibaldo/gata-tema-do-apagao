@@ -1,4 +1,6 @@
 //BARRA LATERAL ESQUERDA
+
+//logo
 .apg-nav-logo {
 
 	img {
@@ -8,3 +10,16 @@
 	}
 
 }
+
+.apg-nav {
+	
+	.nav-link {
+		color: $dark;
+
+		&.active {
+			color: $primary;
+			font-weight: bold;
+		}
+	}
+}
+
