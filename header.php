@@ -31,7 +31,7 @@
 				<div class="row justify-content-between">
 
 					<!-- BARRA LATERAL ESQUERDA -->
-					<div class="col-md-3 overflow-auto sticky-top">
+					<div class="col-12 col-md-3 col-xl-2 overflow-auto sticky-top">
 
 						<div class="min-vh-100 py-4 d-flex flex-column">
 
@@ -130,12 +130,15 @@
 
 
 					<!-- CONTEUDO PRINCIPAL -->
-					<div class="col-md-6">
+					<div class="col-12 col-lg-7 col-xl-6 col-xxl-">
+						<div class="w-100 p-6 bg-primary">
+							s
+						</div>
 						<?php include 'content-index.php';?>
 					</div>
 					<!-- / CONTEUDO PRINCIPAL -->
 
-					<div class="col-xl-2">
+					<div class="col-12 col-lg-2">
 						<div class="my-4">
 							<?php
 							if ( '1' === $search_enabled ) :
