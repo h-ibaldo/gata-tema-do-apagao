@@ -7,22 +7,32 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		<h1 class="entry-title"><?php the_title(); ?></h1>
+
+		<?php 
+
+			if ( has_post_thumbnail() ) :
+				echo '<div class="mt-n4 pb-2">' . get_the_post_thumbnail( get_the_ID(), 'large' ) . '</div>';
+			endif;
+
+		?>
+
+
+		<h1 class="entry-title display-3 mt-2 mt-lg-4 fw-light mb-4 pb-1 pb-lg-0 mb-lg-5"><?php the_title(); ?></h1>
 		<?php
 			if ( 'post' === get_post_type() ) :
 		?>
-			<div class="entry-meta">
+			<div class="entry-meta border-1 border-top border-bottom py-3">
 				<?php apagao_dos_apps_article_posted_on(); ?>
 			</div><!-- /.entry-meta -->
 		<?php
 			endif;
 		?>
 	</header><!-- /.entry-header -->
+
+	<div class="w-100 d-block pt-2" aria-hidden="true"></div>
+
 	<div class="entry-content">
 		<?php
-			if ( has_post_thumbnail() ) :
-				echo '<div class="post-thumbnail">' . get_the_post_thumbnail( get_the_ID(), 'large' ) . '</div>';
-			endif;
 
 			the_content();
 
@@ -34,7 +44,7 @@
 		edit_post_link( __( 'Edit', 'apagao_dos_apps' ), '<span class="edit-link">', '</span>' );
 	?>
 
-	<footer class="entry-meta">
+	<footer class="entry-meta d-none">
 		<hr>
 		<?php
 			/* translators: used between list items, there is a space after the comma */

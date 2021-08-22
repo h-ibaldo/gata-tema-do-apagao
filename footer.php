@@ -1,55 +1,78 @@
-				</div>
 			</div>
-		</main><!-- /#main -->
-		<footer id="footer" class="d-none">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
-						<p><?php printf( esc_html__( '&copy; %1$s %2$s. All rights reserved.', 'apagao_dos_apps' ), date_i18n( 'Y' ), get_bloginfo( 'name', 'display' ) ); ?></p>
-					</div>
+			<!-- / CONTEUDO PRINCIPAL -->
 
-					<?php
-						if ( has_nav_menu( 'footer-menu' ) ) : // See function register_nav_menus() in functions.php
-							/*
-								Loading WordPress Custom Menu (theme_location) ... remove <div> <ul> containers and show only <li> items!!!
-								Menu name taken from functions.php!!! ... register_nav_menu( 'footer-menu', 'Footer Menu' );
-								!!! IMPORTANT: After adding all pages to the menu, don't forget to assign this menu to the Footer menu of "Theme locations" /wp-admin/nav-menus.php (on left side) ... Otherwise the themes will not know, which menu to use!!!
-							*/
-							wp_nav_menu(
-								array(
-									'theme_location'  => 'footer-menu',
-									'container'       => 'nav',
-									'container_class' => 'col-md-6',
-									'fallback_cb'     => '',
-									'items_wrap'      => '<ul class="menu nav justify-content-end">%3$s</ul>',
-									//'fallback_cb'    => 'WP_Bootstrap4_Navwalker_Footer::fallback',
-									'walker'          => new WP_Bootstrap4_Navwalker_Footer(),
-								)
-							);
-						endif;
 
-						if ( is_active_sidebar( 'third_widget_area' ) ) :
-					?>
-						<div class="col-md-12">
+			<div class="col-12 col-lg-2 sticky-top vh-lg-100">
+
+				<footer id="footer">
+
+					<div class="d-flex flex-column min-vh-lg-100 justify-content-between py-4">
+						<!-- BUSCA - DESKTOP -->
+						<div class="d-none d-lg-block">
 							<?php
-								dynamic_sidebar( 'third_widget_area' );
-
-								if ( current_user_can( 'manage_options' ) ) :
+							$search_enabled  = get_theme_mod( 'search_enabled', '1' ); // Get custom meta-value.
+							if ( '1' === $search_enabled ) :
 							?>
-								<span class="edit-link"><a href="<?php echo esc_url( admin_url( 'widgets.php' ) ); ?>" class="badge badge-secondary"><?php esc_html_e( 'Edit', 'apagao_dos_apps' ); ?></a></span><!-- Show Edit Widget link -->
+									<form class="search-form my-2 my-lg-0" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+										<div class="input-group">
+											<input type="text" name="s" class="form-control" placeholder="<?php esc_attr_e( 'Busca', 'apagao_dos_apps' ); ?>" title="<?php esc_attr_e( 'Busca', 'apagao_dos_apps' ); ?>" />
+										</div>
+									</form>
 							<?php
 								endif;
 							?>
 						</div>
-					<?php
-						endif;
-					?>
-				</div><!-- /.row -->
-			</div><!-- /.container -->
-		</footer><!-- /#footer -->
-	</div><!-- /#wrapper -->
-	<?php
-		wp_footer();
-	?>
+						<!-- / BUSCA - DESKTOP -->
+
+						<!-- ICONES DE REDES SOCIAIS -->
+						<div class="h4 d-flex flex-row flex-lg-column mt-4 mb-lg-5 align-items-lg-end">
+							<div class="mb-3 ms-">
+								<a href="https://twitter.com/galodeluta">
+									<i class="fab fa-twitter"></i>
+								</a>
+							</div>
+							<div class="mb-3 ms-4">
+								<a href="https://www.instagram.com/galodelutaoficial/">
+									<i class="fab fa-instagram"></i>
+								</a>
+							</div>
+							<div class="mb-3 ms-4">
+								<a href="">
+									<i class="fab fa-telegram"></i>
+								</a>
+							</div>
+							<div class="mb-3 ms-4">
+								<a href="">
+									<i class="fab fa-whatsapp"></i>
+								</a>
+							</div>
+						</div>
+						<!-- / ICONES DE REDES SOCIAIS -->
+
+						<!-- CREDITOS -->
+						<div class="text-end lh-sm text-secondary" style="font-size: 0.6rem;">
+							🐈‍⬛
+							<br>
+							Site por: gata
+							<br>
+							Grupo de Ativismo
+							<br>
+							Tecnológico Autônomo
+						</div>
+						<!-- / CREDITOS -->
+
+
+					</div>
+				</footer>
+					
+			</div>
+
+	</div><!-- / container -->
+</div><!-- / wrapper -->
+
+<?php
+	wp_footer();
+?>
+
 </body>
 </html>

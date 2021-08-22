@@ -160,7 +160,7 @@ add_filter( 'comments_open', 'apagao_dos_apps_filter_media_comment_status', 10, 
  * @since v1.0
  */
 function apagao_dos_apps_custom_edit_post_link( $output ) {
-	return str_replace( 'class="post-edit-link"', 'class="post-edit-link badge badge-secondary"', $output );
+	return str_replace( 'class="post-edit-link"', 'class="post-edit-link badge badge-secondary d-none"', $output );
 }
 add_filter( 'edit_post_link', 'apagao_dos_apps_custom_edit_post_link' );
 
@@ -192,9 +192,13 @@ if ( ! function_exists( 'apagao_dos_apps_content_nav' ) ) :
 
 		if ( $wp_query->max_num_pages > 1 ) :
 	?>
-			<div id="<?php echo esc_attr( $nav_id ); ?>" class="d-flex mb-4 justify-content-between">
-				<div><?php next_posts_link( '<span aria-hidden="true">&larr;</span> ' . esc_html__( 'Older posts', 'apagao_dos_apps' ) ); ?></div>
-				<div><?php previous_posts_link( esc_html__( 'Newer posts', 'apagao_dos_apps' ) . ' <span aria-hidden="true">&rarr;</span>' ); ?></div>
+			<div id="<?php echo esc_attr( $nav_id ); ?>" class="d-flex flex-wrap mb-2 justify-content-between">
+				<div class="mb-3">
+					<?php next_posts_link( '<span aria-hidden="true">&larr;</span> ' . esc_html__( 'Postagens anteriores', 'apagao_dos_apps' ) ); ?>
+				</div>
+				<div class="mb-3">
+					<?php previous_posts_link( esc_html__( 'Postagens novas', 'apagao_dos_apps' ) . ' <span aria-hidden="true">&rarr;</span>' ); ?>
+				</div>
 			</div><!-- /.d-flex -->
 	<?php
 		else :
@@ -204,7 +208,7 @@ if ( ! function_exists( 'apagao_dos_apps_content_nav' ) ) :
 
 	// Add Class.
 	function posts_link_attributes() {
-		return 'class="btn btn-secondary btn-lg"';
+		return 'class="btn btn-outline-secondary border-0 btn-sm"';
 	}
 	add_filter( 'next_posts_link_attributes', 'posts_link_attributes' );
 	add_filter( 'previous_posts_link_attributes', 'posts_link_attributes' );
@@ -264,7 +268,7 @@ if ( ! function_exists( 'apagao_dos_apps_article_posted_on' ) ) :
 	 */
 	function apagao_dos_apps_article_posted_on() {
 		printf(
-			__( '<span class="sep">Posted on </span><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a><span class="by-author"> <span class="sep"> by </span> <span class="author-meta vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span>', 'apagao_dos_apps' ),
+			__( '<span class="sep">Publicado em </span><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a><span class="by-author"> <span class="sep"> por </span> <span class="author-meta vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span>', 'apagao_dos_apps' ),
 			esc_url( get_the_permalink() ),
 			esc_attr( get_the_date() . ' - ' . get_the_time() ),
 			esc_attr( get_the_date( 'c' ) ),
@@ -288,11 +292,11 @@ function apagao_dos_apps_password_form() {
 
 	$output = '<div class="row">';
 		$output .= '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">';
-		$output .= '<h4 class="col-md-12 alert alert-warning">' . esc_html__( 'This content is password protected. To view it please enter your password below.', 'apagao_dos_apps' ) . '</h4>';
+		$output .= '<h4 class="col-md-12 alert alert-warning">' . esc_html__( 'Este conteúdo é protegido por senha. Entre com sua senha para visualizá-lo.', 'apagao_dos_apps' ) . '</h4>';
 			$output .= '<div class="col-md-6">';
 				$output .= '<div class="input-group">';
-					$output .= '<input type="password" name="post_password" id="' . esc_attr( $label ) . '" placeholder="' . esc_attr__( 'Password', 'apagao_dos_apps' ) . '" class="form-control" />';
-					$output .= '<div class="input-group-append"><input type="submit" name="submit" class="btn btn-primary" value="' . esc_attr__( 'Submit', 'apagao_dos_apps' ) . '" /></div>';
+					$output .= '<input type="password" name="post_password" id="' . esc_attr( $label ) . '" placeholder="' . esc_attr__( 'Senha', 'apagao_dos_apps' ) . '" class="form-control" />';
+					$output .= '<div class="input-group-append"><input type="submit" name="submit" class="btn btn-primary" value="' . esc_attr__( 'Enviar', 'apagao_dos_apps' ) . '" /></div>';
 				$output .= '</div><!-- /.input-group -->';
 			$output .= '</div><!-- /.col -->';
 		$output .= '</form>';
@@ -309,7 +313,7 @@ if ( ! function_exists( 'apagao_dos_apps_comment' ) ) :
 	 * @since v1.0
 	 */
 	function apagao_dos_apps_replace_reply_link_class( $class ) {
-		return str_replace( "class='comment-reply-link", "class='comment-reply-link btn btn-outline-secondary", $class );
+		return str_replace( "class='comment-reply-link", "class='comment-reply-link btn btn-outline-secondary btn-sm border-0 p-0 mb-4", $class );
 	}
 	add_filter( 'comment_reply_link', 'apagao_dos_apps_replace_reply_link_class' );
 
@@ -347,7 +351,7 @@ if ( ! function_exists( 'apagao_dos_apps_comment' ) ) :
 									esc_url( get_comment_link( $comment->comment_ID ) ),
 									get_comment_time( 'c' ),
 									/* translators: 1: date, 2: time */
-									sprintf( esc_html__( '%1$s ago', 'apagao_dos_apps' ), human_time_diff( (int) get_comment_time( 'U' ), current_time( 'timestamp' ) ) )
+									sprintf( esc_html__( '%1$s atrás', 'apagao_dos_apps' ), human_time_diff( (int) get_comment_time( 'U' ), current_time( 'timestamp' ) ) )
 								)
 							);
 
@@ -365,7 +369,7 @@ if ( ! function_exists( 'apagao_dos_apps_comment' ) ) :
 
 				<div class="reply">
 					<?php
-						comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'apagao_dos_apps' ) . ' <span>&darr;</span>', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) );
+						comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Responder', 'apagao_dos_apps' ) . ' <span>&darr;</span>', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) );
 					?>
 				</div><!-- /.reply -->
 			</article><!-- /#comment-## -->
@@ -397,8 +401,8 @@ if ( ! function_exists( 'apagao_dos_apps_comment' ) ) :
 		$consent  = ( empty( $commenter['comment_author_email'] ) ? '' : ' checked="checked"' );
 		$fields   = array(
 			'author'  => '<div class="form-floating mb-3">
-							<input type="text" id="author" name="author" class="form-control" value="' . esc_attr( $commenter['comment_author'] ) . '" placeholder="' . esc_html__( 'Name', 'apagao_dos_apps' ) . ( $req ? '*' : '' ) . '"' . $aria_req . ' />
-							<label for="author">' . esc_html__( 'Name', 'apagao_dos_apps' ) . ( $req ? '*' : '' ) . '</label>
+							<input type="text" id="author" name="author" class="form-control" value="' . esc_attr( $commenter['comment_author'] ) . '" placeholder="' . esc_html__( 'Nome', 'apagao_dos_apps' ) . ( $req ? '*' : '' ) . '"' . $aria_req . ' />
+							<label for="author">' . esc_html__( 'Nome', 'apagao_dos_apps' ) . ( $req ? '*' : '' ) . '</label>
 						</div>',
 			'email'   => '<div class="form-floating mb-3">
 							<input type="email" id="email" name="email" class="form-control" value="' . esc_attr( $commenter['comment_author_email'] ) . '" placeholder="' . esc_html__( 'Email', 'apagao_dos_apps' ) . ( $req ? '*' : '' ) . '"' . $aria_req . ' />
@@ -407,30 +411,30 @@ if ( ! function_exists( 'apagao_dos_apps_comment' ) ) :
 			'url'     => '',
 			'cookies' => '<p class="form-check mb-3 comment-form-cookies-consent">
 							<input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" class="form-check-input" type="checkbox" value="yes"' . $consent . ' />
-							<label class="form-check-label" for="wp-comment-cookies-consent">' . esc_html__( 'Save my name, email, and website in this browser for the next time I comment.', 'apagao_dos_apps' ) . '</label>
+							<label class="form-check-label small" for="wp-comment-cookies-consent">' . esc_html__( 'Salvar meus dados nesse navegador para a próxima vez que eu comentar.', 'apagao_dos_apps' ) . '</label>
 						</p>',
 		);
 
 		$defaults = array(
 			'fields'               => apply_filters( 'comment_form_default_fields', $fields ),
 			'comment_field'        => '<div class="form-floating mb-3">
-											<textarea id="comment" name="comment" class="form-control" aria-required="true" required placeholder="' . esc_attr__( 'Comment', 'apagao_dos_apps' ) . ( $req ? '*' : '' ) . '"></textarea>
-											<label for="comment">' . esc_html__( 'Comment', 'apagao_dos_apps' ) . '</label>
+											<textarea id="comment" name="comment" class="form-control" aria-required="true" required placeholder="' . esc_attr__( 'Comentário', 'apagao_dos_apps' ) . ( $req ? '*' : '' ) . '"></textarea>
+											<label for="comment">' . esc_html__( 'Comentário', 'apagao_dos_apps' ) . '</label>
 										</div>',
 			/** This filter is documented in wp-includes/link-template.php */
-			'must_log_in'          => '<p class="must-log-in">' . sprintf( __( 'You must be <a href="%s">logged in</a> to post a comment.', 'apagao_dos_apps' ), wp_login_url( apply_filters( 'the_permalink', get_the_permalink( get_the_ID() ) ) ) ) . '</p>',
+			'must_log_in'          => '<p class="must-log-in">' . sprintf( __( 'Você deve fazer o <a href="%s">login</a> para fazer um comentário.', 'apagao_dos_apps' ), wp_login_url( apply_filters( 'the_permalink', get_the_permalink( get_the_ID() ) ) ) ) . '</p>',
 			/** This filter is documented in wp-includes/link-template.php */
-			'logged_in_as'         => '<p class="logged-in-as">' . sprintf( __( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>', 'apagao_dos_apps' ), get_edit_user_link(), $user->display_name, wp_logout_url( apply_filters( 'the_permalink', get_the_permalink( get_the_ID() ) ) ) ) . '</p>',
-			'comment_notes_before' => '<p class="small comment-notes">' . esc_html__( 'Your Email address will not be published.', 'apagao_dos_apps' ) . '</p>',
+			'logged_in_as'         => '<p class="logged-in-as">' . sprintf( __( 'Logar como <a href="%1$s">%2$s</a>. <a href="%3$s" title="Desconectar dessa conta">Desconectar dessa conta?</a>', 'apagao_dos_apps' ), get_edit_user_link(), $user->display_name, wp_logout_url( apply_filters( 'the_permalink', get_the_permalink( get_the_ID() ) ) ) ) . '</p>',
+			'comment_notes_before' => '<p class="small comment-notes text-secondary"><small>' . esc_html__( 'Seu email não vai ser publicado.', 'apagao_dos_apps' ) . '</small></p>',
 			'comment_notes_after'  => '',
 			'id_form'              => 'commentform',
 			'id_submit'            => 'submit',
-			'class_submit'         => 'btn btn-primary',
+			'class_submit'         => 'btn btn-outline-primary',
 			'name_submit'          => 'submit',
 			'title_reply'          => '',
-			'title_reply_to'       => esc_html__( 'Leave a Reply to %s', 'apagao_dos_apps' ),
-			'cancel_reply_link'    => esc_html__( 'Cancel reply', 'apagao_dos_apps' ),
-			'label_submit'         => esc_html__( 'Post Comment', 'apagao_dos_apps' ),
+			'title_reply_to'       => esc_html__( 'Deixe uma resposta para %s', 'apagao_dos_apps' ),
+			'cancel_reply_link'    => esc_html__( 'Cancelar resposta', 'apagao_dos_apps' ),
+			'label_submit'         => esc_html__( 'Postar comentário', 'apagao_dos_apps' ),
 			'submit_button'        => '<input type="submit" id="%2$s" name="%1$s" class="%3$s" value="%4$s" />',
 			'submit_field'         => '<div class="form-submit">%1$s %2$s</div>',
 			'format'               => 'html5',

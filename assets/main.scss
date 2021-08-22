@@ -233,7 +233,7 @@ body.admin-bar {
 
 .entry-meta {
 	font-size: small;
-	margin-top: $grid-gutter-width/2;
+	margin-top: 0.75rem;
 }
 
 .single {
@@ -253,7 +253,7 @@ body.admin-bar {
 }
 
 .comment-reply-title {
-	margin: $grid-gutter-width 0 $grid-gutter-width/2;
+	margin: $grid-gutter-width 0 0.75rem;
 }
 
 .commentlist {
@@ -355,4 +355,4 @@ body.admin-bar {
 
 
 //ESTILOS DO TEMA DO APAGAO
-@import 'custom'; 
+@import 'custom';

@@ -352,7 +352,7 @@ $enable-cssgrid:              false !default;
 $enable-button-pointers:      true !default;
 $enable-rfs:                  true !default;
 $enable-validation-icons:     true !default;
-$enable-negative-margins:     false !default;
+$enable-negative-margins:     true; //false !default;
 $enable-deprecation-messages: true !default;
 $enable-important-utilities:  true !default;
 
@@ -523,7 +523,7 @@ $border-color:                $gray-300 !default;
 // scss-docs-start border-radius-variables
 $border-radius:               .25rem !default;
 $border-radius-sm:            .2rem !default;
-$border-radius-lg:            .3rem !default;
+$border-radius-lg:            .625rem;
 $border-radius-pill:          50rem !default;
 // scss-docs-end border-radius-variables
 
@@ -588,7 +588,7 @@ $font-weight-bolder:          bolder !default;
 
 $font-weight-base:            $font-weight-normal !default;
 
-$line-height-base:            1.5 !default;
+$line-height-base:            1.7 !default;
 $line-height-sm:              1.25 !default;
 $line-height-lg:              2 !default;
 
@@ -615,7 +615,7 @@ $font-sizes: (
 $headings-margin-bottom:      $spacer * .5 !default;
 $headings-font-family:        null !default;
 $headings-font-style:         null !default;
-$headings-font-weight:        500 !default;
+$headings-font-weight:        600;//500 !default;
 $headings-line-height:        1.2 !default;
 $headings-color:              null !default;
 // scss-docs-end headings-variables

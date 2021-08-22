@@ -50,52 +50,52 @@ function apagao_dos_apps_customize( $wp_customize ) {
 	);
 
 	// Predefined Navbar scheme.
-	$wp_customize->add_setting(
-		'navbar_scheme',
-		array(
-			'default'           => 'default',
-			'sanitize_callback' => 'sanitize_text_field',
-		)
-	);
-	$wp_customize->add_control(
-		'navbar_scheme',
-		array(
-			'type'     => 'radio',
-			'label'    => __( 'Navbar Scheme', 'apagao_dos_apps' ),
-			'section'  => 'theme_header_section',
-			'choices'  => array(
-				'navbar-light bg-light'  => __( 'Default', 'apagao_dos_apps' ),
-				'navbar-dark bg-dark'    => __( 'Dark', 'apagao_dos_apps' ),
-				'navbar-dark bg-primary' => __( 'Primary', 'apagao_dos_apps' ),
-			),
-			'settings' => 'navbar_scheme',
-			'priority' => 1,
-		)
-	);
+	// $wp_customize->add_setting(
+	// 	'navbar_scheme',
+	// 	array(
+	// 		'default'           => 'default',
+	// 		'sanitize_callback' => 'sanitize_text_field',
+	// 	)
+	// );
+	// $wp_customize->add_control(
+	// 	'navbar_scheme',
+	// 	array(
+	// 		'type'     => 'radio',
+	// 		'label'    => __( 'Navbar Scheme', 'apagao_dos_apps' ),
+	// 		'section'  => 'theme_header_section',
+	// 		'choices'  => array(
+	// 			'navbar-light bg-light'  => __( 'Default', 'apagao_dos_apps' ),
+	// 			'navbar-dark bg-dark'    => __( 'Dark', 'apagao_dos_apps' ),
+	// 			'navbar-dark bg-primary' => __( 'Primary', 'apagao_dos_apps' ),
+	// 		),
+	// 		'settings' => 'navbar_scheme',
+	// 		'priority' => 1,
+	// 	)
+	// );
 
 	// Fixed Header?
-	$wp_customize->add_setting(
-		'navbar_position',
-		array(
-			'default'           => 'static',
-			'sanitize_callback' => 'sanitize_text_field',
-		)
-	);
-	$wp_customize->add_control(
-		'navbar_position',
-		array(
-			'type'     => 'radio',
-			'label'    => __( 'Navbar', 'apagao_dos_apps' ),
-			'section'  => 'theme_header_section',
-			'choices'  => array(
-				'static'       => __( 'Static', 'apagao_dos_apps' ),
-				'fixed_top'    => __( 'Fixed to top', 'apagao_dos_apps' ),
-				'fixed_bottom' => __( 'Fixed to bottom', 'apagao_dos_apps' ),
-			),
-			'settings' => 'navbar_position',
-			'priority' => 2,
-		)
-	);
+	// $wp_customize->add_setting(
+	// 	'navbar_position',
+	// 	array(
+	// 		'default'           => 'static',
+	// 		'sanitize_callback' => 'sanitize_text_field',
+	// 	)
+	// );
+	// $wp_customize->add_control(
+	// 	'navbar_position',
+	// 	array(
+	// 		'type'     => 'radio',
+	// 		'label'    => __( 'Navbar', 'apagao_dos_apps' ),
+	// 		'section'  => 'theme_header_section',
+	// 		'choices'  => array(
+	// 			'static'       => __( 'Static', 'apagao_dos_apps' ),
+	// 			'fixed_top'    => __( 'Fixed to top', 'apagao_dos_apps' ),
+	// 			'fixed_bottom' => __( 'Fixed to bottom', 'apagao_dos_apps' ),
+	// 		),
+	// 		'settings' => 'navbar_position',
+	// 		'priority' => 2,
+	// 	)
+	// );
 
 	// Search?
 	$wp_customize->add_setting(

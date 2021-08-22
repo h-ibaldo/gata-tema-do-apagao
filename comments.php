@@ -12,13 +12,17 @@ if ( post_password_required() ) {
 	return;
 }
 ?>
-<div id="comments">
+<div id="comments" class="mb-5">
+
+	<div class="w-100 border-bottom pt-2 mt-5 mb-4"></div>
+
 	<?php
 		if ( comments_open() && ! have_comments() ) :
 	?>
-		<h2 id="comments-title">
+
+		<h2 id="comments-title" class="h5 text-secondary pt-2">
 			<?php
-				esc_html_e( 'No Comments yet!', 'apagao_dos_apps' );
+				esc_html_e( 'Nenhum comentário ainda...', 'apagao_dos_apps' );
 			?>
 		</h2>
 	<?php
@@ -26,17 +30,17 @@ if ( post_password_required() ) {
 
 		if ( have_comments() ) :
 	?>
-		<h2 id="comments-title">
+		<h2 id="comments-title" class="h5 pt-2">
 			<?php
 				$comments_number = get_comments_number();
 				if ( '1' === $comments_number ) {
-					printf( _x( 'One Reply to &ldquo;%s&rdquo;', 'comments title', 'apagao_dos_apps' ), get_the_title() );
+					printf( _x( 'Uma resposta para &ldquo;%s&rdquo;', 'comments title', 'apagao_dos_apps' ), get_the_title() );
 				} else {
 					printf(
 						/* translators: 1: number of comments, 2: post title */
 						_nx(
-							'%1$s Reply to &ldquo;%2$s&rdquo;',
-							'%1$s Replies to &ldquo;%2$s&rdquo;',
+							'%1$s Responder &ldquo;%2$s&rdquo;',
+							'%1$s Respostas para &ldquo;%2$s&rdquo;',
 							$comments_number,
 							'comments title',
 							'apagao_dos_apps'
@@ -51,14 +55,14 @@ if ( post_password_required() ) {
 			if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
 		?>
 		<nav id="comment-nav-above">
-			<h1 class="assistive-text"><?php esc_html_e( 'Comment navigation', 'apagao_dos_apps' ); ?></h1>
-			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'apagao_dos_apps' ) ); ?></div>
-			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'apagao_dos_apps' ) ); ?></div>
+			<h1 class="assistive-text"><?php esc_html_e( 'Navegação pelos comentários', 'apagao_dos_apps' ); ?></h1>
+			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Comentários antigos', 'apagao_dos_apps' ) ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __( 'Comentários recentes &rarr;', 'apagao_dos_apps' ) ); ?></div>
 		</nav>
 		<?php
 			endif;
 		?>
-		<ol class="commentlist">
+		<ol class="commentlis t apg-comentarios small ps-3">
 			<?php
 				/**
 				 * Loop through and list the comments. Tell wp_list_comments()
@@ -74,9 +78,9 @@ if ( post_password_required() ) {
 			if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
 		?>
 		<nav id="comment-nav-below">
-			<h1 class="assistive-text"><?php esc_html_e( 'Comment navigation', 'apagao_dos_apps' ); ?></h1>
-			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'apagao_dos_apps' ) ); ?></div>
-			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'apagao_dos_apps' ) ); ?></div>
+			<h1 class="assistive-text"><?php esc_html_e( 'Navegação pelos comentários', 'apagao_dos_apps' ); ?></h1>
+			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Comentários antigos', 'apagao_dos_apps' ) ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __( 'Comentários recentes &rarr;', 'apagao_dos_apps' ) ); ?></div>
 		</nav>
 		<?php
 			endif;
@@ -87,7 +91,7 @@ if ( post_password_required() ) {
 		 */
 		elseif ( ! comments_open() && ! is_page() && post_type_supports( get_post_type(), 'comments' ) ) :
 	?>
-		<h2 id="comments-title" class="nocomments"><?php esc_html_e( 'Comments are closed.', 'apagao_dos_apps' ); ?></h2>
+		<h2 id="comments-title" class="nocomments"><?php esc_html_e( 'Fechado para comentários.', 'apagao_dos_apps' ); ?></h2>
 	<?php
 		endif;
 
